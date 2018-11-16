@@ -308,11 +308,9 @@ public class GameManager : MonoBehaviour {
         {
             Player pl = Player.instance;
             pl.cam = Camera.main;
-            formMenu = GameObject.Find("Canvas").transform.Find("Form Questions").gameObject;
             keyText = GameObject.Find("KeyUIText").GetComponent<TextMeshProUGUI>();
             roomText = GameObject.Find("RoomUI").GetComponent<TextMeshProUGUI>();
             levelText = GameObject.Find("LevelUI").GetComponent<TextMeshProUGUI>();
-            endingScreen = GameObject.Find("Canvas").transform.Find("FormPanel").gameObject;
             LoadNewLevel();
         }
     }

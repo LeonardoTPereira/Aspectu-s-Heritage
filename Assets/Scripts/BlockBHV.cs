@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class BlockBHV : TileBHV {
 
-
-	// Use this for initialization
-	void Start () {
-			GetComponent<Collider2D> ().enabled = true; // ativa o colisor
+    // Use this for initialization
+    void Start () {
+		GetComponent<Collider2D> ().enabled = true; // ativa o colisor
 	}
 	
 	// Update is called once per frame
@@ -15,4 +14,13 @@ public class BlockBHV : TileBHV {
 		
 	}
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("CollidedWithSomething");
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Debug.Log("CollidedWithBullet");
+            collision.gameObject.GetComponent<BulletController>().DestroyBullet();
+        }
+    }
 }

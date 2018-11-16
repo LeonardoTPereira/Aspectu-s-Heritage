@@ -21,6 +21,7 @@ public class RoomBHV : MonoBehaviour {
 
 	public KeyBHV keyPrefab;
     public TriforceBHV triPrefab;
+    public GameObject enemyPrefab;
 
     public Collider2D colNorth;
 	public Collider2D colSouth;
@@ -50,14 +51,18 @@ public class RoomBHV : MonoBehaviour {
             //Algum efeito
             transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.red;
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        
+        Vector3 auxPos = new Vector3(transform.position.x + 4, transform.position.y + 4, 0f); 
+
+        Instantiate(enemyPrefab, auxPos, transform.rotation);
 	}
 
-	void SetLayout(){
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    void SetLayout(){
 		doorNorth.keyID = northDoor;
 		doorSouth.keyID = southDoor;
 		doorEast.keyID = eastDoor;

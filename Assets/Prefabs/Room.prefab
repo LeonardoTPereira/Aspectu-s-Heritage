@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 4414742417240294}
   - component: {fileID: 61203995201430082}
   - component: {fileID: 212714350820061636}
+  - component: {fileID: 114720895888859930}
   m_Layer: 0
   m_Name: ColliderWest
   m_TagString: Untagged
@@ -125,6 +126,7 @@ GameObject:
   - component: {fileID: 4575418308165454}
   - component: {fileID: 61780886207372558}
   - component: {fileID: 212245732048463976}
+  - component: {fileID: 114453770154336440}
   m_Layer: 0
   m_Name: ColliderSouth
   m_TagString: Untagged
@@ -188,6 +190,8 @@ GameObject:
   - component: {fileID: 4237344187619836}
   - component: {fileID: 61238966288715422}
   - component: {fileID: 212718876013252408}
+  - component: {fileID: 114912596196793404}
+  - component: {fileID: 50437071531521500}
   m_Layer: 0
   m_Name: ColliderNorth
   m_TagString: Untagged
@@ -255,6 +259,7 @@ GameObject:
   - component: {fileID: 4529366669167700}
   - component: {fileID: 61785919300248960}
   - component: {fileID: 212305178769760132}
+  - component: {fileID: 114252920109708626}
   m_Layer: 0
   m_Name: ColliderEast
   m_TagString: Untagged
@@ -471,6 +476,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50437071531521500
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1697231599815676}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61015855564586198
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -680,7 +705,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 08c6e0fe325ddbd458a592a40962e710, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9cab9c14927eb9444a4c3a47ad28b732, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -775,7 +800,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 08c6e0fe325ddbd458a592a40962e710, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9cab9c14927eb9444a4c3a47ad28b732, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -870,7 +895,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 08c6e0fe325ddbd458a592a40962e710, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9cab9c14927eb9444a4c3a47ad28b732, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -965,7 +990,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 08c6e0fe325ddbd458a592a40962e710, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9cab9c14927eb9444a4c3a47ad28b732, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1068,7 +1093,7 @@ MonoBehaviour:
   openedSprite: {fileID: 21300020, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
   teleportTransform: {fileID: 4757452092410706}
   destination: {fileID: 0}
-  unlockSnd: {fileID: 8300000, guid: f7987142c1aaefa498b7748d83e0f77f, type: 3}
+  unlockSnd: {fileID: 8300000, guid: 4ab9dd6f6c6c61240b244a77b26fcd94, type: 3}
 --- !u!114 &114081829205008226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1086,7 +1111,7 @@ MonoBehaviour:
   openedSprite: {fileID: 21300014, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
   teleportTransform: {fileID: 4317141115486034}
   destination: {fileID: 0}
-  unlockSnd: {fileID: 8300000, guid: f7987142c1aaefa498b7748d83e0f77f, type: 3}
+  unlockSnd: {fileID: 8300000, guid: 4ab9dd6f6c6c61240b244a77b26fcd94, type: 3}
 --- !u!114 &114123737783067614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1104,7 +1129,18 @@ MonoBehaviour:
   openedSprite: {fileID: 21300018, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
   teleportTransform: {fileID: 4178795282519426}
   destination: {fileID: 0}
-  unlockSnd: {fileID: 8300000, guid: f7987142c1aaefa498b7748d83e0f77f, type: 3}
+  unlockSnd: {fileID: 8300000, guid: 4ab9dd6f6c6c61240b244a77b26fcd94, type: 3}
+--- !u!114 &114252920109708626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1978864901181190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8bfe724cea61bf4b864be94c12112b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114406600773019966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1122,7 +1158,40 @@ MonoBehaviour:
   openedSprite: {fileID: 21300016, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
   teleportTransform: {fileID: 4191061800590270}
   destination: {fileID: 0}
-  unlockSnd: {fileID: 8300000, guid: f7987142c1aaefa498b7748d83e0f77f, type: 3}
+  unlockSnd: {fileID: 8300000, guid: 4ab9dd6f6c6c61240b244a77b26fcd94, type: 3}
+--- !u!114 &114453770154336440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566697841167548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8bfe724cea61bf4b864be94c12112b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114720895888859930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172683271766520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8bfe724cea61bf4b864be94c12112b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114912596196793404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1697231599815676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8bfe724cea61bf4b864be94c12112b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114939094486873598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1150,6 +1219,8 @@ MonoBehaviour:
   keyPrefab: {fileID: 114071332633170896, guid: ced0218549bee9d46b47102a1253d89a,
     type: 2}
   triPrefab: {fileID: 114081354997558450, guid: 5d0b89090a7988a40b83856f0ca97fd9,
+    type: 2}
+  enemyPrefab: {fileID: 1738107090986644, guid: 2acf05d08cab7754c81399e4a82b7202,
     type: 2}
   colNorth: {fileID: 61238966288715422}
   colSouth: {fileID: 61780886207372558}
