@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class GameManager : MonoBehaviour {
 
@@ -16,7 +15,7 @@ public class GameManager : MonoBehaviour {
     private Map map = null;
     public AudioSource audioSource;
     public AudioClip bgMusic, fanfarreMusic;
-    public TextMeshProUGUI keyText, roomText, levelText;
+    public TextMesh keyText, roomText, levelText;
     public RoomBHV roomPrefab;
     public Transform roomsParent;  //Transform to hold rooms for leaner hierarchy view
     public RoomBHV[,] roomBHVMap; //2D array for easy room indexing
@@ -308,9 +307,9 @@ public class GameManager : MonoBehaviour {
         {
             Player pl = Player.instance;
             pl.cam = Camera.main;
-            keyText = GameObject.Find("KeyUIText").GetComponent<TextMeshProUGUI>();
-            roomText = GameObject.Find("RoomUI").GetComponent<TextMeshProUGUI>();
-            levelText = GameObject.Find("LevelUI").GetComponent<TextMeshProUGUI>();
+            keyText = GameObject.Find("KeyUIText").GetComponent<TextMesh>();
+            roomText = GameObject.Find("RoomUI").GetComponent<TextMesh>();
+            levelText = GameObject.Find("LevelUI").GetComponent<TextMesh>();
             LoadNewLevel();
         }
     }
