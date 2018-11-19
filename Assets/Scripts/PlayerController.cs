@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
     private float timeAfterShoot, invincibilityCount;
     private Vector2 shootForce = new Vector2(0f, 0f);
     private bool isInvincible;
+    private Color originalColor;
 
     private void Awake()
     {
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour {
         isInvincible = false;
         timeAfterShoot = 0.0f;
         invincibilityCount = 0f;
+        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+        originalColor = sr.color;
     }
     // Use this for initialization
     void Start () {
@@ -30,8 +33,11 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (isInvincible)
-            if (invincibilityTime >= invincibilityCount)
+            if (invincibilityTime < invincibilityCount)
+            {
                 isInvincible = false;
+                gameObject.GetComponent<SpriteRenderer>().color = originalColor;
+            }
             else
                 invincibilityCount += Time.deltaTime;
 	}
@@ -123,10 +129,13 @@ public class PlayerController : MonoBehaviour {
     {
         if (!isInvincible)
         {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             health -= damage;
             if (health <= 0)
             {
                 //TODO KILL
+                Time.timeScale = 0f;
+                GameManager.instance.GameOver();
                 Debug.Log("RIP");
             }
             isInvincible = true;

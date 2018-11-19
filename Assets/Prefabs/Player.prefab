@@ -250,10 +250,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.1
   shootSpeed: 4
-  shootCD: 0.15
+  shootCD: 0.5
   shootDmg: 1
   health: 4
-  invincibilityTime: 1.5
+  invincibilityTime: 0.3
   bulletPrefab: {fileID: 1699235863348634, guid: df37c3a8613851d418c37b519fdb08cc,
     type: 2}
   bulletSpawn: {fileID: 1004127468847722}

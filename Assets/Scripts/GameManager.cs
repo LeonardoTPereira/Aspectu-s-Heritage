@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
     //public string mapFilePath = "Assets/Data/map.txt"; //Path to load map data from
     //public string roomsFilePath = "Assets/Data/rooms.txt";
     public bool readRooms = true;
-    public GameObject formMenu, endingScreen;
+    public GameObject formMenu, endingScreen, gameOverScreen;
 
     public enum LevelPlayState { InProgress, Won, Lost, Skip, Quit }
     public static LevelPlayState state = LevelPlayState.InProgress;
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour {
 
             readRooms = false;
             DontDestroyOnLoad(gameObject);
-            AnalyticsEvent.GameStart();
+            //AnalyticsEvent.GameStart();
             Debug.Log("Level Order");
             for (int i = 0; i < 6; ++i)
             {
@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour {
                 Debug.Log("Map: " + file.text);
             }*/
             
-            AnalyticsEvent.LevelStart(randomLevelList[currentMapId]);
+            //AnalyticsEvent.LevelStart(randomLevelList[currentMapId]);
             //Loads map from data
             LoadMap(randomLevelList[currentMapId]);
         }
@@ -225,7 +225,7 @@ public class GameManager : MonoBehaviour {
 
     void OnApplicationQuit()
     {
-        AnalyticsEvent.GameOver();
+        //AnalyticsEvent.GameOver();
     }
 
     public void SetLevelPlayState(LevelPlayState newState)
@@ -248,7 +248,7 @@ public class GameManager : MonoBehaviour {
         customParams.Add("locks", Player.instance.usedKeys.Count);
         LoadForm();
 
-        switch (state)
+        /*switch (state)
         {
             case LevelPlayState.Won:
                 AnalyticsEvent.LevelComplete(currentTestBatchId + randomLevelList[currentMapId], customParams);
@@ -264,7 +264,7 @@ public class GameManager : MonoBehaviour {
             default:
                 AnalyticsEvent.LevelQuit(currentTestBatchId + randomLevelList[currentMapId], customParams);
                 break;
-        }
+        }*/
 
     }
 
@@ -379,13 +379,13 @@ public class GameManager : MonoBehaviour {
 
     public void UpdateRoomGUI(int x, int y)
     {
-        roomText.text = "Room: " + x/2 + "," + y/2;
+        //roomText.text = "Room: " + x/2 + "," + y/2;
     }
 
     public void UpdateLevelGUI()
     {
         int aux = currentMapId + 1 + (currentTestBatchId * maps.Count);
-        levelText.text = "Nível: " + aux + "/12";
+        //levelText.text = "Nível: " + aux + "/12";
     }
 
     public void ChangeMusic(AudioClip music)
@@ -402,6 +402,11 @@ public class GameManager : MonoBehaviour {
         audioSource.clip = music;
         audioSource.loop = true;
         audioSource.Play();
+    }
+
+    public void GameOver()
+    {
+        gameOverScreen.SetActive(true);
     }
     
 }

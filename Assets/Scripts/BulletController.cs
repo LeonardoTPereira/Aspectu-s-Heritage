@@ -28,7 +28,7 @@ public class BulletController : MonoBehaviour {
     public void DestroyBullet()
     {
         Debug.Log("Destroying Bullet");
-        audioSrc.PlayOneShot(popSnd, 1.0f);
+        //audioSrc.PlayOneShot(popSnd, 0.3f);
         canDestroy = true;
     }
 }

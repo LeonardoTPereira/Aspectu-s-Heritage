@@ -10,6 +10,7 @@ public class EnemyBHV : MonoBehaviour {
 
     private float waitingTime, walkingTime, walkUntil, waitUntil, invincibilityCount;
     private bool isWalking, isInvincible;
+    private Color originalColor;
 
     private void Awake()
     {
@@ -19,6 +20,8 @@ public class EnemyBHV : MonoBehaviour {
         waitUntil = Random.Range(minTimeToWait, maxTimeToWait);
         playerObj = Player.instance.gameObject;
         isInvincible = false;
+        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+        originalColor = sr.color;
     }
     // Use this for initialization
     void Start () {
@@ -29,10 +32,16 @@ public class EnemyBHV : MonoBehaviour {
 	void Update ()
     {
         if (isInvincible)
-            if (invincibilityTime >= invincibilityCount)
+            if (invincibilityTime < invincibilityCount)
+            {
                 isInvincible = false;
+                gameObject.GetComponent<SpriteRenderer>().color = originalColor;
+
+            }
             else
+            {
                 invincibilityCount += Time.deltaTime;
+            }
 
         if (isWalking)
         {
@@ -77,15 +86,20 @@ public class EnemyBHV : MonoBehaviour {
         {
             if (!isInvincible)
             {
+                gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                 health -= collision.GetComponent<BulletController>().damage;
                 CheckDeath();
                 isInvincible = true;
                 invincibilityCount = 0f;
             }
         }
-        else if(collision.tag == "Player")
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
         {
-            collision.GetComponent<PlayerController>().ReceiveDamage(damage);
+            Debug.Log("Collide with Player");
+            collision.gameObject.GetComponent<PlayerController>().ReceiveDamage(damage);
         }
     }
 
