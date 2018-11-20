@@ -307,9 +307,12 @@ public class GameManager : MonoBehaviour {
         {
             Player pl = Player.instance;
             pl.cam = Camera.main;
-            keyText = GameObject.Find("KeyUIText").GetComponent<TextMesh>();
-            roomText = GameObject.Find("RoomUI").GetComponent<TextMesh>();
-            levelText = GameObject.Find("LevelUI").GetComponent<TextMesh>();
+            //TODO: Fix the UI Later
+            //keyText = GameObject.Find("KeyUIText").GetComponent<TextMesh>();
+            //roomText = GameObject.Find("RoomUI").GetComponent<TextMesh>();
+            //levelText = GameObject.Find("LevelUI").GetComponent<TextMesh>();
+            gameOverScreen = GameObject.Find("GameOverScreen");
+            gameOverScreen.SetActive(false);
             LoadNewLevel();
         }
     }

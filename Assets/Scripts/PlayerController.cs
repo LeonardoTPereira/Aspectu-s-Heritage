@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     [SerializeField]
-	protected float speed, shootSpeed, shootCD, shootDmg, health, invincibilityTime;
+	protected float speed, shootSpeed, shootCD, shootDmg, maxHealth, invincibilityTime;
     [SerializeField]
     protected GameObject bulletPrefab, bulletSpawn;
 
     Animator anim;
     float lastX, lastY;
     private AudioSource audioSrc;
-    private float timeAfterShoot, invincibilityCount;
+    private float timeAfterShoot, invincibilityCount, health;
     private Vector2 shootForce = new Vector2(0f, 0f);
     private bool isInvincible;
     private Color originalColor;
 
     private void Awake()
     {
+        health = maxHealth;
         anim = GetComponent<Animator>();
         isInvincible = false;
         timeAfterShoot = 0.0f;

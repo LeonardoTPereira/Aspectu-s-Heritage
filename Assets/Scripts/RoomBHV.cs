@@ -51,9 +51,14 @@ public class RoomBHV : MonoBehaviour {
             //Algum efeito
             transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.red;
 		}
-        Vector3 auxPos = new Vector3(transform.position.x + 4, transform.position.y + 4, 0f); 
+        Vector3 auxPos = new Vector3(transform.position.x, transform.position.y, 0f); 
 
-        Instantiate(enemyPrefab, auxPos, transform.rotation);
+        if(!isStart && !isEnd)
+        {
+            for(int i = 0; i < 5; ++i)
+                Instantiate(enemyPrefab, auxPos, transform.rotation);
+        }
+        
 	}
 
     // Update is called once per frame
