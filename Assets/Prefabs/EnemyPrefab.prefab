@@ -94,7 +94,7 @@ MonoBehaviour:
   minTimeWalking: 1.8
   maxTimeWalking: 4.5
   health: 3
-  moveSpeed: 0.5
+  moveSpeed: 1
   damage: 1
   invincibilityTime: 0.15
   playerObj: {fileID: 1772544863890580, guid: 8fea4dd3f18348d42a4a32bb977123cd, type: 2}

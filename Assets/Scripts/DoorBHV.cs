@@ -66,8 +66,8 @@ public class DoorBHV : MonoBehaviour
                 audioSrc.PlayOneShot(unlockSnd, 0.7f);
                 Player.instance.keys.Remove(keyID);
                 Player.instance.usedKeys.Add(keyID);
-                GameManager.instance.UpdateKeyGUI();
-                GameManager.instance.UpdateRoomGUI(destination.parentRoom.x, destination.parentRoom.y);
+                //GameManager.instance.UpdateKeyGUI();
+                //GameManager.instance.UpdateRoomGUI(destination.parentRoom.x, destination.parentRoom.y);
                 OpenDoor();
                 destination.OpenDoor();
                 isOpen = true;

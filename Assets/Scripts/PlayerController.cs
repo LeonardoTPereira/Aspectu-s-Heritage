@@ -11,13 +11,15 @@ public class PlayerController : MonoBehaviour {
     Animator anim;
     float lastX, lastY;
     private AudioSource audioSrc;
+    [SerializeField]
     private float timeAfterShoot, invincibilityCount, health;
     private Vector2 shootForce = new Vector2(0f, 0f);
     private bool isInvincible;
     private Color originalColor;
 
-    private void Awake()
+    public void Awake()
     {
+        Debug.Log("Awake - max Health:" + maxHealth);
         health = maxHealth;
         anim = GetComponent<Animator>();
         isInvincible = false;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour {
         invincibilityCount = 0f;
         SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
         originalColor = sr.color;
+        Debug.Log("Awake - Health:" + health);
     }
     // Use this for initialization
     void Start () {
@@ -143,5 +146,4 @@ public class PlayerController : MonoBehaviour {
             invincibilityCount = 0f;
         }
     }
-
 }

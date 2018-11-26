@@ -69,8 +69,19 @@ public class EnemyBHV : MonoBehaviour {
 
     void Walk()
     {
+        int xOffset, yOffset;
         Vector2 target = new Vector2(playerObj.transform.position.x - transform.position.x, playerObj.transform.position.y - transform.position.y);
-        transform.position += new Vector3 ((target.x+1) * moveSpeed * Time.deltaTime, (target.y+1) * moveSpeed * Time.deltaTime, 0f);
+        target.Normalize();
+        if (target.x >= 0)
+            xOffset = 1;
+        else
+            xOffset = -1;
+        if (target.y >= 0)
+            yOffset = 1;
+        else
+            yOffset = -1;
+
+        transform.position += new Vector3 ((target.x + xOffset) * moveSpeed * Time.deltaTime, (target.y + yOffset) * moveSpeed * Time.deltaTime, 0f);
         walkingTime += Time.deltaTime;
     }
 
@@ -91,6 +102,7 @@ public class EnemyBHV : MonoBehaviour {
                 CheckDeath();
                 isInvincible = true;
                 invincibilityCount = 0f;
+                collision.GetComponent<BulletController>().DestroyBullet();
             }
         }
     }

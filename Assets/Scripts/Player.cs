@@ -20,7 +20,6 @@ public class Player : PlaceableRoomObject {
 			Destroy (gameObject);
 		}
 		DontDestroyOnLoad (gameObject);
-        
     }
 
 
@@ -28,6 +27,7 @@ public class Player : PlaceableRoomObject {
 	void Start () {
         cam = Camera.main;
 
+        GetComponent<PlayerController>().Awake();
     }
 	
 	// Update is called once per frame
