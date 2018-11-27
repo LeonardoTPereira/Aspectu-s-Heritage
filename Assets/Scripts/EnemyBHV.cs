@@ -8,18 +8,21 @@ public class EnemyBHV : MonoBehaviour {
     [SerializeField]
     protected GameObject playerObj;
 
-    private float waitingTime, walkingTime, walkUntil, waitUntil, invincibilityCount;
-    private bool isWalking, isInvincible;
-    private Color originalColor;
+    protected Animator anim;
+    protected float waitingTime, walkingTime, walkUntil, waitUntil, invincibilityCount;
+    protected bool isWalking, isInvincible;
+    protected Color originalColor;
+    protected float lastX, lastY;
 
     private void Awake()
     {
         waitingTime = 0.0f;
         walkingTime = 0.0f;
         isWalking = false;
-        waitUntil = Random.Range(minTimeToWait, maxTimeToWait);
+        waitUntil = 1.5f;
         playerObj = Player.instance.gameObject;
         isInvincible = false;
+        anim = GetComponent<Animator>();
         SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
         originalColor = sr.color;
     }
@@ -72,6 +75,7 @@ public class EnemyBHV : MonoBehaviour {
         int xOffset, yOffset;
         Vector2 target = new Vector2(playerObj.transform.position.x - transform.position.x, playerObj.transform.position.y - transform.position.y);
         target.Normalize();
+        UpdateAnimation(target);
         if (target.x >= 0)
             xOffset = 1;
         else
@@ -122,5 +126,23 @@ public class EnemyBHV : MonoBehaviour {
             //TODO Audio and Particles
             Destroy(gameObject);
         }
+    }
+
+    protected void UpdateAnimation(Vector2 movement)
+    {
+        if (movement.x == 0f && movement.y == 0f)
+        {
+            anim.SetFloat("LastDirX", lastX);
+            anim.SetFloat("LastDirY", lastY);
+            anim.SetBool("IsMoving", false);
+        }
+        else
+        {
+            lastX = movement.x;
+            lastY = movement.y;
+            anim.SetBool("IsMoving", true);
+        }
+        anim.SetFloat("DirX", movement.x);
+        anim.SetFloat("DirY", movement.y);
     }
 }

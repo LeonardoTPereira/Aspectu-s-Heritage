@@ -1092,6 +1092,10 @@ MonoBehaviour:
   lockedSprite: {fileID: 21300012, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
   openedSprite: {fileID: 21300020, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
   teleportTransform: {fileID: 4757452092410706}
+  enemyPrefab: {fileID: 1738107090986644, guid: 2acf05d08cab7754c81399e4a82b7202,
+    type: 2}
+  towerPrefab: {fileID: 1738107090986644, guid: f209bedb4d54d984b9e313cfcc6ad0fb,
+    type: 2}
   destination: {fileID: 0}
   unlockSnd: {fileID: 8300000, guid: 4ab9dd6f6c6c61240b244a77b26fcd94, type: 3}
 --- !u!114 &114081829205008226
@@ -1110,6 +1114,10 @@ MonoBehaviour:
   lockedSprite: {fileID: 21300006, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
   openedSprite: {fileID: 21300014, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
   teleportTransform: {fileID: 4317141115486034}
+  enemyPrefab: {fileID: 1738107090986644, guid: 2acf05d08cab7754c81399e4a82b7202,
+    type: 2}
+  towerPrefab: {fileID: 1738107090986644, guid: f209bedb4d54d984b9e313cfcc6ad0fb,
+    type: 2}
   destination: {fileID: 0}
   unlockSnd: {fileID: 8300000, guid: 4ab9dd6f6c6c61240b244a77b26fcd94, type: 3}
 --- !u!114 &114123737783067614
@@ -1128,6 +1136,10 @@ MonoBehaviour:
   lockedSprite: {fileID: 21300010, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
   openedSprite: {fileID: 21300018, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
   teleportTransform: {fileID: 4178795282519426}
+  enemyPrefab: {fileID: 1738107090986644, guid: 2acf05d08cab7754c81399e4a82b7202,
+    type: 2}
+  towerPrefab: {fileID: 1738107090986644, guid: f209bedb4d54d984b9e313cfcc6ad0fb,
+    type: 2}
   destination: {fileID: 0}
   unlockSnd: {fileID: 8300000, guid: 4ab9dd6f6c6c61240b244a77b26fcd94, type: 3}
 --- !u!114 &114252920109708626
@@ -1157,6 +1169,10 @@ MonoBehaviour:
   lockedSprite: {fileID: 21300008, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
   openedSprite: {fileID: 21300016, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
   teleportTransform: {fileID: 4191061800590270}
+  enemyPrefab: {fileID: 1738107090986644, guid: 2acf05d08cab7754c81399e4a82b7202,
+    type: 2}
+  towerPrefab: {fileID: 1738107090986644, guid: f209bedb4d54d984b9e313cfcc6ad0fb,
+    type: 2}
   destination: {fileID: 0}
   unlockSnd: {fileID: 8300000, guid: 4ab9dd6f6c6c61240b244a77b26fcd94, type: 3}
 --- !u!114 &114453770154336440
@@ -1221,6 +1237,8 @@ MonoBehaviour:
   triPrefab: {fileID: 114081354997558450, guid: 5d0b89090a7988a40b83856f0ca97fd9,
     type: 2}
   enemyPrefab: {fileID: 1738107090986644, guid: 2acf05d08cab7754c81399e4a82b7202,
+    type: 2}
+  towerPrefab: {fileID: 1738107090986644, guid: f209bedb4d54d984b9e313cfcc6ad0fb,
     type: 2}
   colNorth: {fileID: 61238966288715422}
   colSouth: {fileID: 61780886207372558}
@@ -1357,7 +1375,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300002, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d2d318c135eb914aaaf76579b64c80c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1403,7 +1421,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300002, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d2d318c135eb914aaaf76579b64c80c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1587,7 +1605,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300002, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d2d318c135eb914aaaf76579b64c80c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1633,7 +1651,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300002, guid: b92c1c44f604d074595ba5ee0e831239, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d2d318c135eb914aaaf76579b64c80c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

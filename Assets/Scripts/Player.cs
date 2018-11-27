@@ -26,8 +26,6 @@ public class Player : PlaceableRoomObject {
 	// Use this for initialization
 	void Start () {
         cam = Camera.main;
-
-        GetComponent<PlayerController>().Awake();
     }
 	
 	// Update is called once per frame

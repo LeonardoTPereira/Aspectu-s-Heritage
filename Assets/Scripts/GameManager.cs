@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour {
             maps.Add(Resources.Load<TextAsset>("Batch0/Dragon"));
             maps.Add(Resources.Load<TextAsset>("Batch0/MyDragon"));
             maps.Add(Resources.Load<TextAsset>("Batch0/Moon"));
+            ImpairmentManager.instance.RemovePostProcessing();
         } else if (instance != this) {
             Destroy(gameObject);
         }
@@ -307,12 +308,14 @@ public class GameManager : MonoBehaviour {
         {
             Player pl = Player.instance;
             pl.cam = Camera.main;
+            pl.gameObject.GetComponent<PlayerController>().ResetHealth();
             //TODO: Fix the UI Later
             //keyText = GameObject.Find("KeyUIText").GetComponent<TextMesh>();
             //roomText = GameObject.Find("RoomUI").GetComponent<TextMesh>();
             //levelText = GameObject.Find("LevelUI").GetComponent<TextMesh>();
             gameOverScreen = GameObject.Find("GameOverScreen");
             gameOverScreen.SetActive(false);
+            ImpairmentManager.instance.SelectImpairment();
             LoadNewLevel();
         }
     }
@@ -409,6 +412,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver()
     {
+        ImpairmentManager.instance.RemoveImpairment();
         gameOverScreen.SetActive(true);
     }
     

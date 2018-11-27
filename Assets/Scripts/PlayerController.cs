@@ -12,14 +12,13 @@ public class PlayerController : MonoBehaviour {
     float lastX, lastY;
     private AudioSource audioSrc;
     [SerializeField]
-    private float timeAfterShoot, invincibilityCount, health;
+    private float timeAfterShoot, invincibilityCount, health, rotatedAngle;
     private Vector2 shootForce = new Vector2(0f, 0f);
     private bool isInvincible;
     private Color originalColor;
 
     public void Awake()
     {
-        Debug.Log("Awake - max Health:" + maxHealth);
         health = maxHealth;
         anim = GetComponent<Animator>();
         isInvincible = false;
@@ -27,7 +26,6 @@ public class PlayerController : MonoBehaviour {
         invincibilityCount = 0f;
         SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
         originalColor = sr.color;
-        Debug.Log("Awake - Health:" + health);
     }
     // Use this for initialization
     void Start () {
@@ -80,21 +78,28 @@ public class PlayerController : MonoBehaviour {
         bool willShoot = false;
         if (shootDir.x > 0.01f)
         {
+            rotatedAngle = 90;
+            bulletSpawn.transform.RotateAround(transform.position, Vector3.forward, rotatedAngle);
             shootForce = new Vector2(shootSpeed, 0f);
             willShoot = true;
         }
         else if (shootDir.x < - 0.01f)
         {
+            rotatedAngle = -90;
+            bulletSpawn.transform.RotateAround(transform.position, Vector3.forward, rotatedAngle);
             shootForce = new Vector2(-shootSpeed, 0f);
             willShoot = true;
         }
         else if (shootDir.y > 0.01f)
         {
+            rotatedAngle = 180;
+            bulletSpawn.transform.RotateAround(transform.position, Vector3.forward, rotatedAngle);
             shootForce = new Vector2(0f, shootSpeed);
             willShoot = true;
         }
         else if (shootDir.y < - 0.01f)
         {
+            rotatedAngle = 0;
             shootForce = new Vector2(0f, -shootSpeed);
             willShoot = true;
         }
@@ -103,6 +108,7 @@ public class PlayerController : MonoBehaviour {
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
             bullet.GetComponent<Rigidbody2D>().AddForce(shootForce + movementDir, ForceMode2D.Impulse);
             bullet.GetComponent<BulletController>().damage = this.shootDmg;
+            bulletSpawn.transform.RotateAround(transform.position, Vector3.forward, -rotatedAngle);
         }
     }
 
@@ -145,5 +151,10 @@ public class PlayerController : MonoBehaviour {
             isInvincible = true;
             invincibilityCount = 0f;
         }
+    }
+
+    public void ResetHealth()
+    {
+        health = maxHealth;
     }
 }

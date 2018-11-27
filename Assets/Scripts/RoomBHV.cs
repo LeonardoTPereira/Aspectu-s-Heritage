@@ -13,6 +13,7 @@ public class RoomBHV : MonoBehaviour {
 	public int availableKeyID = 0;
 	public bool isStart = false;
 	public bool isEnd = false;
+    public bool hasEnemies;
 
 	public DoorBHV doorNorth;
 	public DoorBHV doorSouth;
@@ -21,7 +22,7 @@ public class RoomBHV : MonoBehaviour {
 
 	public KeyBHV keyPrefab;
     public TriforceBHV triPrefab;
-    public GameObject enemyPrefab;
+    public GameObject enemyPrefab, towerPrefab;
 
     public Collider2D colNorth;
 	public Collider2D colSouth;
@@ -30,6 +31,11 @@ public class RoomBHV : MonoBehaviour {
 
 	public TileBHV tilePrefab;
     public BlockBHV blockPrefab;
+
+    private void Awake()
+    {
+        hasEnemies = false;
+    }
 
     // Use this for initialization
     void Start () {
@@ -53,12 +59,15 @@ public class RoomBHV : MonoBehaviour {
 		}
         Vector3 auxPos = new Vector3(transform.position.x, transform.position.y, 0f); 
 
-        if(!isStart && !isEnd)
+        /*if(!isStart && !isEnd)
         {
             for(int i = 0; i < 5; ++i)
                 Instantiate(enemyPrefab, auxPos, transform.rotation);
-        }
-        
+            Instantiate(towerPrefab, new Vector3(transform.position.x + 7, transform.position.y + 7, 0f), transform.rotation);
+            Instantiate(towerPrefab, new Vector3(transform.position.x + 7, transform.position.y - 7, 0f), transform.rotation);
+            Instantiate(towerPrefab, new Vector3(transform.position.x - 7, transform.position.y - 7, 0f), transform.rotation);
+            Instantiate(towerPrefab, new Vector3(transform.position.x - 7, transform.position.y + 7, 0f), transform.rotation);
+        }*/
 	}
 
     // Update is called once per frame

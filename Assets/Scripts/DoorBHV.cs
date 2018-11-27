@@ -11,6 +11,7 @@ public class DoorBHV : MonoBehaviour
     public Sprite lockedSprite;
     public Sprite openedSprite;
     public Transform teleportTransform;
+    public GameObject enemyPrefab, towerPrefab;
     //	public int moveX;
     //	public int moveY;
     [SerializeField]
@@ -95,6 +96,16 @@ public class DoorBHV : MonoBehaviour
         Player.instance.transform.position = destination.teleportTransform.position;
         RoomBHV parent = destination.parentRoom;
         Player.instance.AdjustCamera(parent.x, parent.y);
+        if (!destination.transform.parent.gameObject.GetComponent<RoomBHV>().hasEnemies)
+        {
+            for (int i = 0; i < 5; ++i)
+                Instantiate(enemyPrefab, new Vector3(destination.transform.parent.position.x+0.1f*i, destination.transform.parent.position.y + 0.1f * i, 0f), destination.transform.parent.rotation);
+            Instantiate(towerPrefab, new Vector3(destination.transform.parent.position.x + 6, destination.transform.parent.position.y + 5.5f, 0f), destination.transform.parent.rotation);
+            Instantiate(towerPrefab, new Vector3(destination.transform.parent.position.x + 6, destination.transform.parent.position.y - 6, 0f), destination.transform.parent.rotation);
+            Instantiate(towerPrefab, new Vector3(destination.transform.parent.position.x - 6, destination.transform.parent.position.y - 6, 0f), destination.transform.parent.rotation);
+            Instantiate(towerPrefab, new Vector3(destination.transform.parent.position.x - 6, destination.transform.parent.position.y + 5.5f, 0f), destination.transform.parent.rotation);
+            destination.transform.parent.gameObject.GetComponent<RoomBHV>().hasEnemies = true;
+        }
         OnRoomExit();
         OnRoomEnter();
     }

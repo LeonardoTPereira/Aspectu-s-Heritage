@@ -16,7 +16,7 @@ public class WallBHV : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log("CollidedWithSomething");
-        if (collider.tag == "Bullet")
+        if (collider.tag == "Bullet" || collider.tag == "EnemyBullet")
         {
             Debug.Log("CollidedWithBullet");
             collider.GetComponent<BulletController>().DestroyBullet();

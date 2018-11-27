@@ -17,7 +17,7 @@ public class BlockBHV : TileBHV {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("CollidedWithSomething");
-        if (collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "EnemyBullet")
         {
             Debug.Log("CollidedWithBullet");
             collision.gameObject.GetComponent<BulletController>().DestroyBullet();

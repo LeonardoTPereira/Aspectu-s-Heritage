@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 4808421858998248}
   - component: {fileID: 212271897118720944}
   m_Layer: 0
-  m_Name: Macular
+  m_Name: Glaucoma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -309,14 +309,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
-  shootSpeed: 4
+  shootSpeed: 7
   shootCD: 0.5
   shootDmg: 1
-  maxHealth: 3
-  invincibilityTime: 0.3
+  maxHealth: 1
+  invincibilityTime: 0.5
   bulletPrefab: {fileID: 1699235863348634, guid: df37c3a8613851d418c37b519fdb08cc,
     type: 2}
   bulletSpawn: {fileID: 1004127468847722}
+  timeAfterShoot: 0
+  invincibilityCount: 0
+  health: 0
+  rotatedAngle: 0
 --- !u!212 &212271897118720944
 SpriteRenderer:
   m_ObjectHideFlags: 1

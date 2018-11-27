@@ -31,4 +31,17 @@ public class BulletController : MonoBehaviour {
         //audioSrc.PlayOneShot(popSnd, 0.3f);
         canDestroy = true;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(tag == "EnemyBullet")
+        {
+           if (collision.gameObject.tag == "Player")
+           {
+                Debug.Log("Collide with Player");
+                collision.gameObject.GetComponent<PlayerController>().ReceiveDamage(damage);
+                Destroy(gameObject);
+           }
+        }
+    }
 }

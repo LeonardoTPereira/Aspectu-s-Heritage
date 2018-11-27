@@ -7,6 +7,8 @@ TagManager:
   - Undefined
   - Bullet
   - Enemy
+  - Block
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
