@@ -62,7 +62,6 @@ public class GameManager : MonoBehaviour {
             maps.Add(Resources.Load<TextAsset>("Batch0/Dragon"));
             maps.Add(Resources.Load<TextAsset>("Batch0/MyDragon"));
             maps.Add(Resources.Load<TextAsset>("Batch0/Moon"));
-            ImpairmentManager.instance.RemovePostProcessing();
         } else if (instance != this) {
             Destroy(gameObject);
         }
@@ -101,6 +100,8 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+
+        ImpairmentManager.instance.RemovePostProcessing();
         //LoadNewLevel();
     }
 
