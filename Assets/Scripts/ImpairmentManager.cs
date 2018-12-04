@@ -31,12 +31,12 @@ public class ImpairmentManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else if (instance != this)
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
     }
 
     // Use this for initialization
@@ -103,7 +103,7 @@ public class ImpairmentManager : MonoBehaviour
                 GameObject.Find("Main Camera").GetComponent<Colorblind>().Type = 0;
                 break;
             case 5:
-                Camera.main.GetComponent<PostProcessingBehaviour>().profile.bloom.enabled = false;
+                GameObject.Find("Main Camera").GetComponent<PostProcessingBehaviour>().profile.bloom.enabled = false;
                 break;
             default:
                 break;

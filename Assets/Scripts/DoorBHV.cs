@@ -94,7 +94,8 @@ public class DoorBHV : MonoBehaviour
     private void MovePlayerToNextRoom ()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemies == null)
+        Debug.Log("Lenght>>>" + enemies.Length);
+        if (enemies.Length == 0)
         {
             parentRoom.hasEnemies = false;
         }

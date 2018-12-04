@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
     //public string mapFilePath = "Assets/Data/map.txt"; //Path to load map data from
     //public string roomsFilePath = "Assets/Data/rooms.txt";
     public bool readRooms = true;
-    public GameObject formMenu, endingScreen, impairmentDescriptionScreen, canvas;
+    public GameObject formMenu, canvas;
 
     public enum LevelPlayState { InProgress, Won, Lost, Skip, Quit }
     public static LevelPlayState state = LevelPlayState.InProgress;
@@ -237,37 +237,18 @@ public class GameManager : MonoBehaviour {
 
     public void LevelComplete()
     {
-        ChangeMusic(fanfarreMusic);
-        //TODO save every gameplay data
-        //TODO make it load a new level
-        Debug.Log("MapID:" + randomLevelList[currentMapId]);
-        Debug.Log("MapsLength:" + maps.Count);
+        //TODO: add another fanfarre music someday
+        //ChangeMusic(fanfarreMusic);
+
 
         //Analytics for the level
-        Dictionary<string, object> customParams = new Dictionary<string, object>();
+        /*Dictionary<string, object> customParams = new Dictionary<string, object>();
         customParams.Add("seconds_played", secondsElapsed);
         customParams.Add("keys", Player.instance.keys.Count);
         customParams.Add("locks", Player.instance.usedKeys.Count);
         LoadForm();
-
-        /*switch (state)
-        {
-            case LevelPlayState.Won:
-                AnalyticsEvent.LevelComplete(currentTestBatchId + randomLevelList[currentMapId], customParams);
-                break;
-            case LevelPlayState.Lost:
-                AnalyticsEvent.LevelFail(currentTestBatchId + randomLevelList[currentMapId], customParams);
-                break;
-            case LevelPlayState.Skip:
-                AnalyticsEvent.LevelSkip(currentTestBatchId + randomLevelList[currentMapId], customParams);
-                break;
-            case LevelPlayState.InProgress:
-            case LevelPlayState.Quit:
-            default:
-                AnalyticsEvent.LevelQuit(currentTestBatchId + randomLevelList[currentMapId], customParams);
-                break;
-        }*/
-
+        */
+        canvas.GetComponent<TextUIBHV>().WinGame();
     }
 
     public void CheckEndOfBatch()
@@ -302,6 +283,8 @@ public class GameManager : MonoBehaviour {
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+        //TODO Fix this gambiarra to load different levels
+        currentMapId = Random.Range(0, 5);
         Debug.Log("Level Loaded");
         Debug.Log(scene.name);
         Debug.Log(mode);
@@ -317,7 +300,6 @@ public class GameManager : MonoBehaviour {
             //gameOverScreen = GameObject.Find("GameOverScreen");
             //gameOverScreen.SetActive(false);
             canvas = GameObject.Find("Canvas");
-            canvas.transform.Find("ImpairmentInfo").gameObject.SetActive(false);
             ImpairmentManager.instance.SelectImpairment();
             LoadNewLevel();
         }
@@ -377,7 +359,7 @@ public class GameManager : MonoBehaviour {
         {
             //keyText.gameObject.SetActive(false);
             //roomText.gameObject.SetActive(false);
-            endingScreen.SetActive(true);
+            //endingScreen.SetActive(true);
         }
     }
 

@@ -28,26 +28,35 @@ public class TextUIBHV : MonoBehaviour {
     [SerializeField]
     Text nameText, descriptionText;
     [SerializeField]
-    GameObject ImpairmentInfoScreen;
+    GameObject ImpairmentInfoScreen, winScreen;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        ImpairmentInfoScreen.SetActive(false);
+        winScreen.SetActive(false);
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (ImpairmentInfoScreen.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (ImpairmentInfoScreen.activeSelf)
             {
-                Debug.Log("Restart");
                 GameManager.instance.RestartGame();
-                ImpairmentInfoScreen.SetActive(false);
+                CloseDescription();
             }
-            else if (Input.GetKeyDown(KeyCode.F))
-                Application.OpenURL(quotes[ImpairmentManager.instance.ActualImpairment].url);
+            //TODO
+            //Will do something to not repeat the same stage
+            if (winScreen.activeSelf)
+            {
+                GameManager.instance.RestartGame();
+                CloseWinGame();
+            }
         }
+        if (Input.GetKeyDown(KeyCode.F))
+            if (ImpairmentInfoScreen.activeSelf)
+                Application.OpenURL(quotes[ImpairmentManager.instance.ActualImpairment].url);
+        
     }
 
     public void GoToURL()
@@ -65,5 +74,15 @@ public class TextUIBHV : MonoBehaviour {
     public void CloseDescription()
     {
         ImpairmentInfoScreen.SetActive(false);
+    }
+
+    public void WinGame()
+    {
+        winScreen.SetActive(true);
+    }
+
+    public void CloseWinGame()
+    {
+        winScreen.SetActive(false);
     }
 }

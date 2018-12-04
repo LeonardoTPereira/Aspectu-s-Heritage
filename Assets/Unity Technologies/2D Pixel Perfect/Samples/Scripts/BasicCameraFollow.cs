@@ -7,7 +7,7 @@ public class BasicCameraFollow : MonoBehaviour
 	private Vector3 targetPos;
 	public float moveSpeed, smoothTime;
 
-    private void Awake()
+    private void Start()
     {
         followTarget = Player.instance.gameObject;
     }
