@@ -14,6 +14,8 @@ public class RoomBHV : MonoBehaviour {
 	public bool isStart = false;
 	public bool isEnd = false;
     public bool hasEnemies;
+    public bool[] hasTower;
+    public int nSlimes;
 
 	public DoorBHV doorNorth;
 	public DoorBHV doorSouth;
@@ -34,7 +36,20 @@ public class RoomBHV : MonoBehaviour {
 
     private void Awake()
     {
-        hasEnemies = false;
+        hasEnemies = true;
+        nSlimes = Random.Range(0, 5);
+        hasTower = new bool[4];
+        for(int i = 0; i < 4; ++i)
+        {
+            if(Random.Range(0, 99) > 49)
+            {
+                hasTower[i] = true;
+            }
+            else
+            {
+                hasTower[i] = false;
+            }
+        }
     }
 
     // Use this for initialization
@@ -50,13 +65,15 @@ public class RoomBHV : MonoBehaviour {
 		if (isStart){
 			//Algum efeito
 			transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.green;
-		}
+            hasEnemies = false;
+        }
 		if (isEnd){
             TriforceBHV tri = Instantiate(triPrefab, transform);
             tri.SetRoom(x, y);
             //Algum efeito
             transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.red;
-		}
+            hasEnemies = false;
+        }
         Vector3 auxPos = new Vector3(transform.position.x, transform.position.y, 0f); 
 
         /*if(!isStart && !isEnd)

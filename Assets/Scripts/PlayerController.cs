@@ -49,14 +49,17 @@ public class PlayerController : MonoBehaviour {
 		float moveVertical = Input.GetAxisRaw ("Vertical");
         Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
         movement.Normalize();
-		Move(movement);
+
+        float shootHorizontal = Input.GetAxisRaw("HorizontalShoot");
+        float shootVertical = Input.GetAxisRaw("VerticalShoot");
+        Vector2 shootDir = new Vector2(shootHorizontal, shootVertical);
+        shootDir.Normalize();
+        
+        Move(movement, shootDir);
 
         if (shootCD < timeAfterShoot)
         {
-            float shootHorizontal = Input.GetAxisRaw("HorizontalShoot");
-            float shootVertical = Input.GetAxisRaw("VerticalShoot");
-            Vector2 shootDir = new Vector2(shootHorizontal, shootVertical);
-            shootDir.Normalize();
+            
             Shoot(shootDir, movement);
             timeAfterShoot = 0f;
         }
@@ -64,9 +67,10 @@ public class PlayerController : MonoBehaviour {
             timeAfterShoot += Time.fixedDeltaTime;
 	}
 
-	protected void Move(Vector2 movement){
+	protected void Move(Vector2 movement, Vector2 shoot)
+    {
 		transform.position += (Vector3)movement*speed;
-        UpdateAnimation(movement);
+        UpdateMoveAnimation(movement, shoot);
 		/*if(movement != Vector2.zero){
 			movement.x *= 100000; //favorece olhar na horizontal (elimina olhar diagonal)
 			transform.up = movement;	
@@ -112,22 +116,47 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    protected void UpdateAnimation(Vector2 movement)
+    protected void UpdateMoveAnimation(Vector2 movement, Vector2 shoot)
     {
-        if(movement.x == 0f && movement.y == 0f)
+        Vector2 directionToFace;
+        //If it is shooting, the animation direction takes priority over movement
+        if (System.Math.Abs(shoot.x) > 0.01f || System.Math.Abs(shoot.y) > 0.01f)
         {
             anim.SetFloat("LastDirX", lastX);
             anim.SetFloat("LastDirY", lastY);
-            anim.SetBool("IsMoving", false);
+            Debug.Log("Shooting Direction");
+            directionToFace = shoot;
         }
+        //Else, will face the movement direction
         else
         {
-            lastX = movement.x;
-            lastY = movement.y;
+            directionToFace = movement;
+        }
+        //If not shooting nor moving, maintain the idle direction
+        if (directionToFace.x == 0f && directionToFace.y == 0f)
+        {
+            anim.SetFloat("LastDirX", lastX);
+            anim.SetFloat("LastDirY", lastY);
+        }
+        //Else, update the idle direction
+        else
+        {
+            lastX = directionToFace.x;
+            lastY = directionToFace.y;
+        }
+        //If not moving, sets the animation boolean to false
+        if (movement.x == 0f && movement.y == 0f)
+        {
+            anim.SetBool("IsMoving", false);
+        }
+        //Else, to true and updates the movement direction
+        else
+        {
+
+            anim.SetFloat("DirX", directionToFace.x);
+            anim.SetFloat("DirY", directionToFace.y);
             anim.SetBool("IsMoving", true);
         }
-        anim.SetFloat("DirX", movement.x);
-        anim.SetFloat("DirY", movement.y);
     }
 
     public void PlayGetkey()

@@ -175,7 +175,8 @@ MonoBehaviour:
   readRooms: 1
   formMenu: {fileID: 0}
   endingScreen: {fileID: 0}
-  gameOverScreen: {fileID: 0}
+  impairmentDescriptionScreen: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!114 &114474325694721414
 MonoBehaviour:
   m_ObjectHideFlags: 1

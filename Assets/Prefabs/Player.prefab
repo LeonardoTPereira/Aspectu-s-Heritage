@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4438353666449226}
   - component: {fileID: 212422268240538634}
   m_Layer: 0
-  m_Name: Retinitis
+  m_Name: Macular
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   shootSpeed: 7
   shootCD: 0.5
   shootDmg: 1
-  maxHealth: 1
+  maxHealth: 3
   invincibilityTime: 0.5
   bulletPrefab: {fileID: 1699235863348634, guid: df37c3a8613851d418c37b519fdb08cc,
     type: 2}
