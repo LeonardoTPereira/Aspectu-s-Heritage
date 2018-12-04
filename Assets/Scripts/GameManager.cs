@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
     //public string mapFilePath = "Assets/Data/map.txt"; //Path to load map data from
     //public string roomsFilePath = "Assets/Data/rooms.txt";
     public bool readRooms = true;
-    public GameObject formMenu, endingScreen, gameOverScreen;
+    public GameObject formMenu, endingScreen, impairmentDescriptionScreen, canvas;
 
     public enum LevelPlayState { InProgress, Won, Lost, Skip, Quit }
     public static LevelPlayState state = LevelPlayState.InProgress;
@@ -314,8 +314,10 @@ public class GameManager : MonoBehaviour {
             //keyText = GameObject.Find("KeyUIText").GetComponent<TextMesh>();
             //roomText = GameObject.Find("RoomUI").GetComponent<TextMesh>();
             //levelText = GameObject.Find("LevelUI").GetComponent<TextMesh>();
-            gameOverScreen = GameObject.Find("GameOverScreen");
-            gameOverScreen.SetActive(false);
+            //gameOverScreen = GameObject.Find("GameOverScreen");
+            //gameOverScreen.SetActive(false);
+            canvas = GameObject.Find("Canvas");
+            canvas.transform.Find("ImpairmentInfo").gameObject.SetActive(false);
             ImpairmentManager.instance.SelectImpairment();
             LoadNewLevel();
         }
@@ -414,7 +416,12 @@ public class GameManager : MonoBehaviour {
     public void GameOver()
     {
         ImpairmentManager.instance.RemoveImpairment();
-        gameOverScreen.SetActive(true);
+        canvas.GetComponent<TextUIBHV>().CreateDescription();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Level");
     }
     
 }

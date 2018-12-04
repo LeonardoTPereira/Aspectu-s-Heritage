@@ -9,8 +9,21 @@ public class ImpairmentManager : MonoBehaviour
 
     public static ImpairmentManager instance;
     [SerializeField]
-    private List<int> impairmentList;
-    private int actualImpairment;
+    List<int> impairmentList;
+    int actualImpairment;
+
+    public int ActualImpairment
+    {
+        get
+        {
+            return actualImpairment;
+        }
+
+        set
+        {
+            actualImpairment = value;
+        }
+    }
 
     void Awake()
     {
@@ -40,9 +53,9 @@ public class ImpairmentManager : MonoBehaviour
 
     public void SelectImpairment()
     {
-        actualImpairment = impairmentList[Random.Range(0, impairmentList.Count)];
-        Debug.Log("Actual Impairment: " + actualImpairment);
-        switch (actualImpairment)
+        ActualImpairment = impairmentList[Random.Range(0, impairmentList.Count)];
+        Debug.Log("Actual Impairment: " + ActualImpairment);
+        switch (ActualImpairment)
         {
             //Glaucoma
             case 0:
@@ -50,7 +63,7 @@ public class ImpairmentManager : MonoBehaviour
                 break;
             //Retinitis
             case 1:
-                Player.instance.gameObject.transform.Find("Retinitis").gameObject.SetActive(true);
+                Player.instance.gameObject.transform.Find("Macular").gameObject.SetActive(true);
                 break;
             //ColorBlind Protanopia
             case 2:
@@ -74,15 +87,15 @@ public class ImpairmentManager : MonoBehaviour
 
     public void RemoveImpairment()
     {
-        switch (actualImpairment)
+        switch (ActualImpairment)
         {
             //Glaucoma
             case 0:
                 Player.instance.gameObject.transform.Find("Glaucoma").gameObject.SetActive(false);
                 break;
-            //Retinitis
+            //Macular
             case 1:
-                Player.instance.gameObject.transform.Find("Retinitis").gameObject.SetActive(false);
+                Player.instance.gameObject.transform.Find("Macular").gameObject.SetActive(false);
                 break;
             case 2:
             case 3:

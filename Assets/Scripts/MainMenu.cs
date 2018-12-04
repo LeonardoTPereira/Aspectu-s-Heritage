@@ -25,10 +25,10 @@ public class MainMenu : MonoBehaviour {
         mainScreen.SetActive(false);
         introScreen.SetActive(true);
     }
-    public void PlayGame()
+    /*public void PlayGame()
     {
         SceneManager.LoadScene("Level");
-    }
+    }*/
     public void QuitGame()
     {
         Application.Quit();
